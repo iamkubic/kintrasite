@@ -1,75 +1,73 @@
-<!-- consultation.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Schedule Consultation | KINTRA</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Schedule Consultation | KINTRA</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-black">
+<body class="bg-white text-black flex flex-col min-h-screen">
 
 <!-- NAVBAR -->
-<nav id="navbar" class="fixed top-0 left-0 w-full bg-white shadow-md px-8 py-4 flex justify-between items-center z-50">
-  <div class="text-2xl font-bold">KINTRA</div>
+<nav class="w-full bg-white shadow-md px-8 py-4 flex justify-between items-center">
+  <a href="index.html" class="text-2xl font-bold">KINTRA</a>
   <div class="space-x-6">
     <a href="index.html#projects" class="hover:underline">Featured Productions</a>
     <a href="index.html#clients" class="hover:underline">Clients</a>
-    <a href="consultation.html" class="border border-black px-4 py-2 rounded bg-black text-white hover:bg-neutral-800 transition">Schedule Consultation</a>
   </div>
 </nav>
 
-<!-- SPACER FOR FIXED NAV -->
-<div class="h-20"></div>
-
-<!-- CONSULTATION FORM -->
-<section class="bg-gray-50 py-20 px-8 max-w-3xl mx-auto">
+<!-- CONTENT -->
+<main class="flex-grow max-w-2xl mx-auto px-6 py-16">
   <h1 class="text-3xl font-bold mb-6">Schedule a Consultation</h1>
+  <p class="mb-6 text-gray-700">Please fill out the form below to schedule a consultation with Kintra. We will get back to you promptly to confirm your slot and discuss your project requirements in detail.</p>
+
   <iframe 
-    class="airtable-embed w-full border border-gray-300 rounded" 
+    class="w-full h-[600px] border border-gray-300 rounded" 
     src="https://airtable.com/embed/appvYstB3Xkf4WsUc/pagZQxf1bErnvetdE/form" 
     frameborder="0" 
-    onmousewheel="" 
-    width="100%" 
-    height="533" 
-    style="background: transparent; border: 1px solid #ccc;">
+    loading="lazy">
   </iframe>
-</section>
+</main>
 
 <!-- FOOTER -->
-<footer class="bg-black text-white py-12 px-8">
+<footer class="bg-black text-white py-12 px-8 mt-8">
   <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+
     <div>
-      <h3 class="font-extrabold text-xl mb-2">KINTRA</h3>
-      <p class="max-w-sm text-gray-300">
+      <a href="index.html" class="font-extrabold text-xl mb-2 inline-block">KINTRA</a>
+      <p class="max-w-sm text-gray-300 mt-2">
         Kintra Studios provides sound, direction, and execution for creators and brands globally.
       </p>
       <p class="mt-4 text-gray-300">
-        General enquiries: 
+        General enquiries:
         <a href="mailto:hello@kintra.studio" class="underline hover:text-white">hello@kintra.studio</a>
       </p>
       <p class="mt-0 text-gray-300">
-        Careers: 
+        Careers:
         <a href="mailto:careers@kintra.studio" class="underline hover:text-white">careers@kintra.studio</a>
       </p>
     </div>
+
     <div class="flex flex-col space-y-2">
       <a href="index.html#about" class="hover:underline">About</a>
       <a href="index.html#projects" class="hover:underline">Projects</a>
       <a href="index.html#clients" class="hover:underline">Clients</a>
       <a href="consultation.html" class="hover:underline">Contact</a>
     </div>
+
     <div class="flex flex-col space-y-2 text-gray-400">
       <a href="terms.html" class="hover:underline">Terms of Service</a>
       <a href="privacy.html" class="hover:underline">Privacy Policy</a>
+      <a href="cookies.html" class="hover:underline">Cookie Policy</a>
     </div>
+
   </div>
+
   <div class="mt-8 text-center text-gray-500 text-sm">
     © 2025 Kintra Studios. All rights reserved.
   </div>
 </footer>
 
-<script src="js/script.js"></script>
 </body>
 </html>
