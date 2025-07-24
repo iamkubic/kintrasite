@@ -235,9 +235,7 @@ function carousel() {
         embed: 'https://open.spotify.com/embed/track/5LajfGRTUx0W4S4yFNbQmU?utm_source=generator&theme=0'
       }
     ],
-    init() {
-      setInterval(() => { this.next() }, 8000);
-    },
+
     next() {
       this.active = (this.active + 1) % this.projects.length;
     },
