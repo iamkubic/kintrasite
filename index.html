@@ -119,15 +119,15 @@
 </div>
 
 
-    <!-- Dots -->
-    <div class="flex justify-center mt-4 space-x-2">
-      <template x-for="(project, index) in projects" :key="index">
-        <div :class="{'bg-black': active === index, 'bg-gray-400': active !== index}"
-             class="w-3 h-3 rounded-full"></div>
-      </template>
-    </div>
-  </div>
-</section>
+<!-- Dots -->
+<div class="flex justify-center mt-4 space-x-2">
+    <template x-for="(project, index) in projects" :key="index">
+        <button @click="goTo(index)"
+            :class="{'bg-black': active === index, 'bg-gray-400': active !== index}"
+            class="w-3 h-3 rounded-full transition"></button>
+    </template>
+</div>
+
 
 
 
@@ -235,9 +235,7 @@ function carousel() {
         embed: 'https://open.spotify.com/embed/track/5LajfGRTUx0W4S4yFNbQmU?utm_source=generator&theme=0'
       }
     ],
-    init() {
-      setInterval(() => { this.next() }, 8000);
-    },
+
     next() {
       this.active = (this.active + 1) % this.projects.length;
     },
