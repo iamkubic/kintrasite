@@ -11,3 +11,13 @@ body, html {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.lora-italic {
+    font-family: 'Lora', serif;
+    font-style: italic;
+}
+
+.font-lora-italic {
+    font-family: 'Lora', serif !important;
+    font-style: italic !important;
+}
