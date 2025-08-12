@@ -1,159 +1,300 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
   <title>KINTRA</title>
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Alpine.js CDN, deferred for performance -->
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  
+  <!-- Custom stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
+  
+  <!-- Site favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png">
+  
+  <!-- Google font: Lora (italic, weight 500) -->
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
 </head>
+
 <body class="bg-white text-black flex flex-col min-h-screen">
-<main class="flex-grow">
-  <nav id="navbar" class="fixed top-0 left-0 w-full bg-white shadow-md flex justify-between items-center z-50 px-6 md:px-8 py-4">
-    <a href="index.html" class="text-2xl font-bold no-underline text-black">KINTRA</a>
-    <div class="hidden md:flex space-x-6 items-center">
+
+  <main class="flex-grow">
+
+    <!-- Navigation bar fixed to top -->
+    <nav id="navbar" 
+         class="fixed top-0 left-0 w-full bg-white shadow-md flex justify-between items-center z-50 px-6 md:px-8 py-4">
+      
+      <!-- Logo / Brand -->
+      <a href="index.html" class="text-2xl font-bold no-underline text-black">KINTRA</a>
+
+      <!-- Desktop navigation links: hidden on small screens -->
+      <div class="hidden md:flex space-x-6 items-center">
+        <a href="#projects" class="hover:underline">Featured Productions</a>
+        <a href="#clients" class="hover:underline">Clients</a>
+        <a href="consultation.html" 
+           class="border border-black px-4 py-2 rounded hover:bg-black hover:text-white transition whitespace-nowrap">
+          Schedule Consultation
+        </a>
+      </div>
+
+      <!-- Mobile menu toggle button, visible only on small screens -->
+      <button id="menu-toggle" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M4 8h16M4 16h16" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu dropdown, initially hidden -->
+    <div id="mobile-menu" 
+         class="hidden fixed top-16 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 py-6 z-40">
       <a href="#projects" class="hover:underline">Featured Productions</a>
       <a href="#clients" class="hover:underline">Clients</a>
-      <a href="consultation.html" class="border border-black px-4 py-2 rounded hover:bg-black hover:text-white transition whitespace-nowrap">Schedule Consultation</a>
-    </div>
-    <button id="menu-toggle" class="md:hidden focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
-      </svg>
-    </button>
-  </nav>
-  <div id="mobile-menu" class="hidden fixed top-16 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 py-6 z-40">
-    <a href="#projects" class="hover:underline">Featured Productions</a>
-    <a href="#clients" class="hover:underline">Clients</a>
-    <a href="consultation.html" class="border border-black px-4 py-2 rounded hover:bg-black hover:text-white transition">Schedule Consultation</a>
-  </div>
-  <section id="hero" class="relative flex flex-col justify-center h-screen overflow-hidden">
-    <canvas id="sineWave" class="absolute inset-0 w-full h-full"></canvas>
-    <h1 class="relative z-10 text-[12vw] sm:text-[7.5vw] font-extrabold tracking-tight leading-none pl-[5vw]">KINTRA</h1>
-    <p class="font-lora-italic text-base md:text-lg leading-snug pl-[5vw] mt-4 max-w-[32rem] break-words">
-      Independent music agency providing sound, direction and execution for creators and brands globally.
-    </p>
-    <div class="relative z-10 flex flex-col sm:flex-row flex-wrap gap-4 mt-8 px-4 sm:pl-[5vw]">
-      <a href="consultation.html" id="scheduleButton" class="w-full sm:w-auto text-center px-6 py-3 bg-black text-white text-sm tracking-wide font-semibold uppercase hover:bg-neutral-800 transition">Schedule Consultation</a>
-      <a href="#projects" class="w-full sm:w-auto text-center px-6 py-3 border border-black text-black text-sm tracking-wide font-semibold uppercase hover:bg-black hover:text-white transition">View Projects</a>
-    </div>
-    <div id="scrollArrow" class="absolute bottom-8 right-8 z-10 transition-opacity duration-500">
-      <a href="#about" class="text-neutral-500 hover:text-neutral-700">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
+      <a href="consultation.html" 
+         class="border border-black px-4 py-2 rounded hover:bg-black hover:text-white transition">
+        Schedule Consultation
       </a>
     </div>
-  </section>
-  <section id="about" class="max-w-5xl mx-auto px-8 py-20">
-    <h2 class="text-3xl font-semibold mb-6">About Us</h2>
-    <p class="font-lora-italic text-lg leading-relaxed text-gray-700 max-w-3xl">
-      Kintra is an independent music agency specializing in sound design, creative direction, and full production services for artists and brands worldwide.
-    </p>
-  </section>
-  <section id="projects" class="bg-gray-50 py-20 px-4">
-    <h2 class="text-3xl font-semibold mb-8 text-center">Featured Productions</h2>
-    <div x-data="carousel()" x-init="init()" class="relative max-w-5xl mx-auto overflow-hidden">
-      <div class="flex transition-transform duration-500" :style="transform: translateX(-${active * 100}%);">
-        <template x-for="(project, index) in projects" :key="index">
-          <div class="flex-none w-full px-2 md:px-4">
-            <div :class="active === index ? 'scale-100 opacity-100' : 'scale-90 opacity-50'" class="transition-transform duration-500 transform">
-              <iframe :src="project.embed" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" class="rounded-lg w-full max-w-2xl mx-auto"></iframe>
-              <h3 class="font-semibold text-xl mt-4 text-center" x-text="project.title"></h3>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative flex flex-col justify-center h-screen overflow-hidden">
+      
+      <!-- Background canvas for sine wave animation -->
+      <canvas id="sineWave" class="absolute inset-0 w-full h-full"></canvas>
+
+      <!-- Main site title, large text with responsive font size -->
+      <h1 class="relative z-10 text-[12vw] sm:text-[7.5vw] font-extrabold tracking-tight leading-none pl-[5vw]">
+        KINTRA
+      </h1>
+
+      <!-- Tagline / Description -->
+      <p class="font-lora-italic text-base md:text-lg leading-snug pl-[5vw] mt-4 max-w-[32rem] break-words">
+        Independent music agency providing sound, direction and execution for creators and brands globally.
+      </p>
+
+      <!-- Call to action buttons -->
+      <div class="relative z-10 flex flex-col sm:flex-row flex-wrap gap-4 mt-8 px-4 sm:pl-[5vw]">
+        <a href="consultation.html" id="scheduleButton" 
+           class="w-full sm:w-auto text-center px-6 py-3 bg-black text-white text-sm tracking-wide font-semibold uppercase hover:bg-neutral-800 transition">
+          Schedule Consultation
+        </a>
+        <a href="#projects" 
+           class="w-full sm:w-auto text-center px-6 py-3 border border-black text-black text-sm tracking-wide font-semibold uppercase hover:bg-black hover:text-white transition">
+          View Projects
+        </a>
+      </div>
+
+      <!-- Scroll arrow linking to "About" section -->
+      <div id="scrollArrow" class="absolute bottom-8 right-8 z-10 transition-opacity duration-500">
+        <a href="#about" class="text-neutral-500 hover:text-neutral-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="max-w-5xl mx-auto px-8 py-20">
+      <h2 class="text-3xl font-semibold mb-6">About Us</h2>
+      <p class="font-lora-italic text-lg leading-relaxed text-gray-700 max-w-3xl">
+        Kintra is an independent music agency specializing in sound design, creative direction, and full production services for artists and brands worldwide.
+      </p>
+    </section>
+
+    <!-- Featured Productions Section with Carousel -->
+    <section id="projects" class="bg-gray-50 py-20 px-4">
+      <h2 class="text-3xl font-semibold mb-8 text-center">Featured Productions</h2>
+
+      <!-- Alpine.js component for carousel functionality -->
+      <div x-data="carousel()" x-init="init()" class="relative max-w-5xl mx-auto overflow-hidden">
+
+        <!-- Carousel slides container, horizontal flex with translation -->
+        <div class="flex transition-transform duration-500" :style="`transform: translateX(-${active * 100}%)`;">
+          
+          <!-- Repeat each project as a slide -->
+          <template x-for="(project, index) in projects" :key="index">
+            <div class="flex-none w-full px-2 md:px-4">
+
+              <!-- Slide content with scale and opacity based on active state -->
+              <div :class="active === index ? 'scale-100 opacity-100' : 'scale-90 opacity-50'" 
+                   class="transition-transform duration-500 transform">
+                
+                <!-- Embedded Spotify iframe for music preview -->
+                <iframe 
+                  :src="project.embed" 
+                  width="100%" height="352" frameborder="0" 
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy" 
+                  class="rounded-lg w-full max-w-2xl mx-auto">
+                </iframe>
+
+                <!-- Project title below the embed -->
+                <h3 class="font-semibold text-xl mt-4 text-center" x-text="project.title"></h3>
+              </div>
             </div>
-          </div>
-        </template>
+          </template>
+        </div>
+
+        <!-- Carousel previous button (hidden on small screens) -->
+        <div class="absolute top-1/2 left-4 transform -translate-y-1/2 hidden sm:block">
+          <button @click="prev" class="p-2 rounded-full hover:bg-neutral-200 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="black">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Carousel next button (hidden on small screens) -->
+        <div class="absolute top-1/2 right-4 transform -translate-y-1/2 hidden sm:block">
+          <button @click="next" class="p-2 rounded-full hover:bg-neutral-200 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="black">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Carousel navigation dots -->
+        <div class="flex justify-center mt-4 space-x-2">
+          <template x-for="(project, index) in projects" :key="index">
+            <button @click="goTo(index)" 
+                    :class="{'bg-black': active === index, 'bg-gray-400': active !== index}" 
+                    class="w-3 h-3 rounded-full transition">
+            </button>
+          </template>
+        </div>
       </div>
-      <div class="absolute top-1/2 left-4 transform -translate-y-1/2 hidden sm:block">
-        <button @click="prev" class="p-2 rounded-full hover:bg-neutral-200 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="black">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="max-w-7xl mx-auto px-8 py-20">
+      <h2 class="text-3xl font-semibold mb-8">Clients</h2>
+
+      <!-- Grid layout listing client names -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-gray-700">
+        
+        <div class="space-y-2">
+          <div>Gamitronics</div>
+          <div>Loop Interactive</div>
+          <div>95 Films</div>
+          <div>Drew Brian</div>
+        </div>
+
+        <div class="space-y-2">
+          <div>Shubham Kabra</div>
+          <div>Biancca</div>
+          <div>Suyash</div>
+          <div>Kubic</div>
+        </div>
+
+        <div class="space-y-2">
+          <div>Sadaat Shafqat Amanat</div>
+          <div>Utpal Udit</div>
+          <div>Swara</div>
+          <div>LIMTR</div>
+        </div>
       </div>
-      <div class="absolute top-1/2 right-4 transform -translate-y-1/2 hidden sm:block">
-        <button @click="next" class="p-2 rounded-full hover:bg-neutral-200 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="black">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-black text-white py-12 px-8 mt-auto">
+
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-8">
+      
+      <!-- Brand and contact info -->
+      <div>
+        <h3 class="font-extrabold text-xl mb-2">KINTRA</h3>
+        <p class="max-w-sm text-gray-300">
+          Kintra Studios provides sound, direction, and execution for creators and brands globally.
+        </p>
+        <p class="mt-4 text-gray-300">
+          General enquiries: 
+          <a href="mailto:hello@kintra.studio" class="underline">hello@kintra.studio</a>
+        </p>
+        <p class="mt-0 text-gray-300">
+          Careers: 
+          <a href="mailto:careers@kintra.studio" class="underline hover:text-white">careers@kintra.studio</a>
+        </p>
       </div>
-      <div class="flex justify-center mt-4 space-x-2">
-        <template x-for="(project, index) in projects" :key="index">
-          <button @click="goTo(index)" :class="{'bg-black': active === index, 'bg-gray-400': active !== index}" class="w-3 h-3 rounded-full transition"></button>
-        </template>
+
+      <!-- Footer navigation links -->
+      <div class="flex flex-col space-y-2">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#clients" class="hover:underline">Clients</a>
+        <a href="consultation.html" class="hover:underline">Contact</a>
+      </div>
+
+      <!-- Legal links -->
+      <div class="flex flex-col space-y-2 text-gray-400">
+        <a href="terms.html" class="hover:underline">Terms of Service</a>
+        <a href="privacy.html" class="hover:underline">Privacy Policy</a>
+        <a href="cookies.html" class="hover:underline">Cookie Policy</a>
       </div>
     </div>
-  </section>
-  <section id="clients" class="max-w-7xl mx-auto px-8 py-20">
-    <h2 class="text-3xl font-semibold mb-8">Clients</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-gray-700">
-      <div class="space-y-2">
-        <div>Gamitronics</div>
-        <div>Loop Interactive</div>
-        <div>95 Films</div>
-        <div>Drew Brian</div>
-      </div>
-      <div class="space-y-2">
-        <div>Shubham Kabra</div>
-        <div>Biancca</div>
-        <div>Suyash</div>
-        <div>Kubic</div>
-      </div>
-      <div class="space-y-2">
-        <div>Sadaat Shafqat Amanat</div>
-        <div>Utpal Udit</div>
-        <div>Swara</div>
-        <div>LIMTR</div>
-      </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 text-center text-gray-500 text-sm">
+      © 2025 Kintra Studios. All rights reserved.
     </div>
-  </section>
-</main>
-<footer class="bg-black text-white py-12 px-8 mt-auto">
-  <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between gap-8">
-    <div>
-      <h3 class="font-extrabold text-xl mb-2">KINTRA</h3>
-      <p class="max-w-sm text-gray-300">Kintra Studios provides sound, direction, and execution for creators and brands globally.</p>
-      <p class="mt-4 text-gray-300">General enquiries: <a href="mailto:hello@kintra.studio" class="underline">hello@kintra.studio</a></p>
-      <p class="mt-0 text-gray-300">Careers: <a href="mailto:careers@kintra.studio" class="underline hover:text-white">careers@kintra.studio</a></p>
-    </div>
-    <div class="flex flex-col space-y-2">
-      <a href="#about" class="hover:underline">About</a>
-      <a href="#projects" class="hover:underline">Projects</a>
-      <a href="#clients" class="hover:underline">Clients</a>
-      <a href="consultation.html" class="hover:underline">Contact</a>
-    </div>
-    <div class="flex flex-col space-y-2 text-gray-400">
-      <a href="terms.html" class="hover:underline">Terms of Service</a>
-      <a href="privacy.html" class="hover:underline">Privacy Policy</a>
-      <a href="cookies.html" class="hover:underline">Cookie Policy</a>
-    </div>
-  </div>
-  <div class="mt-8 text-center text-gray-500 text-sm">
-    © 2025 Kintra Studios. All rights reserved.
-  </div>
-</footer>
-<script src="js/script.js"></script>
-<script>
-function carousel() {
-  return {
-    active: 0,
-    projects: [
-      { title: 'Din Raat / Off My Mind (Biancca, Suyash)', embed: 'https://open.spotify.com/embed/track/7lUcliDJo4j3GYDb4ZMC65?utm_source=generator&theme=0' },
-      { title: 'More Saiyaan (Sadaat Shafqat Amanat, Utpal Udit, Suyash)', embed: 'https://open.spotify.com/embed/track/2Duts6S27U1rQardvkcI7K?utm_source=generator&theme=0' },
-      { title: 'Saajan (LIMTR)', embed: 'https://open.spotify.com/embed/track/1b5jMD3zq79RRPa79AELhS?utm_source=generator&theme=0' },
-      { title: 'Mil Mahiya (Shubham Kabra)', embed: 'https://open.spotify.com/embed/track/4TaRKL0HIToMoXiC29sQLA?utm_source=generator&theme=0' },
-      { title: 'Down (Kubic)', embed: 'https://open.spotify.com/embed/track/2Fc45X7b0RDEdaC1RbT5av?utm_source=generator&theme=0' },
-      { title: 'Your Love (Inflake) - Vocal Processing', embed: 'https://open.spotify.com/embed/track/5LajfGRTUx0W4S4yFNbQmU?utm_source=generator&theme=0' }
-    ],
-    next() { this.active = (this.active + 1) % this.projects.length },
-    prev() { this.active = (this.active - 1 + this.projects.length) % this.projects.length },
-    goTo(i) { this.active = i }
-  }
-}
-</script>
+  </footer>
+
+  <!-- External script -->
+  <script src="js/script.js"></script>
+
+  <!-- Alpine.js carousel component -->
+  <script>
+    function carousel() {
+      return {
+        active: 0,
+        projects: [
+          { 
+            title: 'Din Raat / Off My Mind (Biancca, Suyash)', 
+            embed: 'https://open.spotify.com/embed/track/7lUcliDJo4j3GYDb4ZMC65?utm_source=generator&theme=0' 
+          },
+          { 
+            title: 'More Saiyaan (Sadaat Shafqat Amanat, Utpal Udit, Suyash)', 
+            embed: 'https://open.spotify.com/embed/track/2Duts6S27U1rQardvkcI7K?utm_source=generator&theme=0' 
+          },
+          { 
+            title: 'Saajan (LIMTR)', 
+            embed: 'https://open.spotify.com/embed/track/1b5jMD3zq79RRPa79AELhS?utm_source=generator&theme=0' 
+          },
+          { 
+            title: 'Mil Mahiya (Shubham Kabra)', 
+            embed: 'https://open.spotify.com/embed/track/4TaRKL0HIToMoXiC29sQLA?utm_source=generator&theme=0' 
+          },
+          { 
+            title: 'Down (Kubic)', 
+            embed: 'https://open.spotify.com/embed/track/2Fc45X7b0RDEdaC1RbT5av?utm_source=generator&theme=0' 
+          },
+          { 
+            title: 'Your Love (Inflake) - Vocal Processing', 
+            embed: 'https://open.spotify.com/embed/track/5LajfGRTUx0W4S4yFNbQmU?utm_source=generator&theme=0' 
+          }
+        ],
+        next() { 
+          this.active = (this.active + 1) % this.projects.length 
+        },
+        prev() { 
+          this.active = (this.active - 1 + this.projects.length) % this.projects.length 
+        },
+        goTo(i) { 
+          this.active = i 
+        }
+      }
+    }
+  </script>
 </body>
 </html>
+```
