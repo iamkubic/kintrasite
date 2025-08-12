@@ -12,6 +12,13 @@ function toggleNavbar(state) {
   navbarLinks.forEach(link => link.style.pointerEvents = state ? 'auto' : 'none');
 }
 
+// Initial navbar visibility on page load
+if (window.scrollY > window.innerHeight * 0.1) {
+  toggleNavbar(true);
+} else {
+  toggleNavbar(false);
+}
+
 window.addEventListener('scroll', () => {
   clearTimeout(scrollTimeout);
   if (window.scrollY > window.innerHeight * 0.1) {
@@ -106,8 +113,6 @@ window.addEventListener('scroll', () => {
     scrollArrow.style.pointerEvents = 'auto';
   }
 });
-
-
 
 // Mobile menu toggle
 const menuToggle = document.getElementById('menu-toggle');
